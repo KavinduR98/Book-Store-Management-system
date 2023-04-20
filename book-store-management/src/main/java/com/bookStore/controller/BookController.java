@@ -10,8 +10,8 @@ public class BookController {
 		return "home";
 	}
 	@GetMapping("/book_register")
-		public String bookRegister() {
-			return "bookRegister";
+	public String bookRegister() {
+		return "bookRegister";
 	}
 	
 
