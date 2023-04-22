@@ -12,7 +12,6 @@
 	crossorigin="anonymous">
 
 <title>Book Store</title>
-<script src="https://kit.fontawesome.com/2bfb946228.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<!--  -->
@@ -55,31 +54,29 @@
 		</div>
 	</nav>
 
-	<div class="container my-5 col-md-6">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th scope="col">Id</th>
-					<th scope="col">Name</th>
-					<th scope="col">Author</th>
-					<th scope="col">Price</th>
-					<th scope="col">Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="b :${book}">
-					<td th:text="${b.id}"></td>
-					<td th:text="${b.name}"></td>
-					<td th:text="${b.author}"></td>
-					<td th:text="${b.price}"></td>
-					<td><a class="btn btn-secondary btn-sm" th:href="@{/myList/{id}(id=${b.id})}">Add To Mybook</a>
-						<a style="color: blue" th:href="@{/editBook/{id}(id=${b.id})}"><i class="fa-regular fa-pen-to-square ms-4"> Edit</i></a>
-						<a style="color: red"><i class="fa-regular fa-trash ms-4">Delete</i></a>
-					</td>
-				</tr>
+	<div class="container my-5 p-5" style="border: 1px solid black;">
+		<h4 class="text-center">Edit Book Info</h4>
+		<form class="col-md-4 offset-md-4" th:action="@{/save}" method="post" th:object="${book}">
+		
+			<input type="hidden" name="id" th:value="${book.id}"/>  
+			<div class="mb-3">
+				<label for="name" class="form-label">Name</label> <input type="text"
+					class="form-control" name="name" th:value="${book.name}">
+			</div>
 
-			</tbody>
-		</table>
+			<div class="mb-3">
+				<label for="author" class="form-label">Author</label> <input
+					type="text" class="form-control" name="author" th:value="${book.author}">
+			</div>
+
+			<div class="mb-3">
+				<label for="price" class="form-label">Price</label> <input
+					type="text" class="form-control" name="price" th:value="${book.price}">
+			</div>
+			<center>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</center>
+		</form>
 	</div>
 </body>
 </html>
