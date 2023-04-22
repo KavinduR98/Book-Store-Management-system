@@ -66,4 +66,10 @@ public class BookController {
 		return "bookEdit";
 	}
 	
+	@RequestMapping("/deleteBook/{id}")
+	public String deleteBook(@PathVariable("id")int id) {
+		service.deleteById(id);
+		return "redirect:/available_books";
+	}
+	
 }
