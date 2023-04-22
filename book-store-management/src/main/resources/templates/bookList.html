@@ -54,27 +54,28 @@
 		</div>
 	</nav>
 
-	<div class="container my-5 p-5" style="border: 1px solid black;">
-		<h4 class="text-center">New Book Register</h4>
-		<form class="col-md-4 offset-md-4" th:action="@{/save}" method="post">
-			<div class="mb-3">
-				<label for="name" class="form-label">Name</label> <input type="text"
-					class="form-control" name="name">
-			</div>
+	<div class="container my-5 col-md-6">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Name</th>
+					<th scope="col">Author</th>
+					<th scope="col">Price</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="b :${book}">
+					<td th:text="${b.id}"></td>
+					<td th:text="${b.name}"></td>
+					<td th:text="${b.author}"></td>
+					<td th:text="${b.price}"></td>
+					<td><a class="btn btn-secondary btn-sm">Add To Mybook</a></td>
+				</tr>
 
-			<div class="mb-3">
-				<label for="author" class="form-label">Author</label> <input
-					type="text" class="form-control" name="author">
-			</div>
-
-			<div class="mb-3">
-				<label for="price" class="form-label">Price</label> <input
-					type="text" class="form-control" name="price">
-			</div>
-			<center>
-				<button type="submit" class="btn btn-primary">Submit</button>
-			</center>
-		</form>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>
